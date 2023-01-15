@@ -1,0 +1,38 @@
+Основні команді терміналу:
+-путь (pwd)
+-лист (ls)
+-навигация (cd)
+-очистка `clear` или `control + l`
+=создание файлов (touch)
+-создание папок (mkdir)
+=переименование/перемещение (mv)
+-удаление (rm)
+
+//Установка React
+npx create-react-app .
+
+// Для путей
+1. Создать файл jsconfig.json в корни проекта
+2. Внутри файла прописать:
+{
+"compilerOptions": {
+"baseUrl": "src"
+},
+"include": ["src"]
+}
+
+// Установка иконок https://react-icons.github.io/react-icons
+npm install react-icons
+
+//Установка CSS в JS:
+1. (Styled-components) https://styled-components.com/docs/basics#installation
+npm install --save styled-components
+===============
+ИЛИ
+===============
+2. (Emotion) https://emotion.sh/docs/introduction
+npm i @emotion/styled @emotion/react
+
+//Установка Styled System для создания однотипных контейнеров https://styled-system.com/table
+npm i styled-system
+npm i styled-system styled-components
