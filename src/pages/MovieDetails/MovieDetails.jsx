@@ -39,7 +39,7 @@ export const MovieDetails = () => {
    if (status === 'resolved') {
       return <div>
          <Box px='4' py='6' borderBottom='header' borderColor='header'>
-            <Btn to={location.state?.from ?? '/home'}>Вернуться назад</Btn>
+            <Btn to={location.state?.from ?? '/thisevening/home'}>Вернуться назад</Btn>
             <Box display='flex' gridGap='6'>
                <div>
                   <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
@@ -60,7 +60,7 @@ export const MovieDetails = () => {
          </Box>
          <Box display='flex' flexDirection="column" gridGap='5' py='6' px='4' borderBottom='header' borderColor='header'>
             <p>Дополнительная информация</p>
-            <AdditionalInfo />
+            <AdditionalInfo params={params.movieId} />
          </Box>
          <Outlet />
       </div>

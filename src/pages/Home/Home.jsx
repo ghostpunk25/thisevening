@@ -59,7 +59,7 @@ export const Home = () => {
          <H1>Популярное сегодня</H1>
          <Box as='ul' display='grid' gridGap='6' gridTemplateColumns='repeat(6, 1fr)' >
             {moviesList.map(item => (
-               <LinkItem state={{ from: location }} key={item.id} to={`/movies/${item.id}`}>
+               <LinkItem state={{ from: location }} key={item.id} to={`/thisevening/movies/${item.id}`}>
                   <div><Img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt={item.title} /></div>
                   <p>{item.title}</p>
                </LinkItem>

@@ -42,7 +42,7 @@ export const MoviesSaerchList = ({ name }) => {
    if (status === 'resolved') {
       return <Box as='ul' display='grid' gridTemplateColumns='repeat(6, 1fr)' flexDirection='column' gridGap='5'>
          {movies.map(item => (
-            <LinkItem state={{ from: location }} key={item.id} to={`/movies/${item.id}`}>
+            <LinkItem state={{ from: location }} key={item.id} to={`/thisevening/movies/${item.id}`}>
                <div><Img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt={item.title} /></div>
                <p>{item.title}</p>
             </LinkItem>
