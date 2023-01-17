@@ -27,7 +27,15 @@ margin-bottom: ${p => p.theme.space[5]}px;
 padding: ${p => p.theme.space[4]}px;
 background: ${p => p.theme.colors.btn};
 transition: all 0.3s ease 0s;
+border:  ${p => p.theme.borders.normal};
 :hover{
    background: ${p => p.theme.colors.hover};
 }
+`
+export const AddP = styled.p`
+font-size: ${p => p.theme.fontSize.m};
+font-weight: ${p => p.theme.fontWeights.bold};
+`
+export const Img = styled.img`
+max-width: 100%;
 `

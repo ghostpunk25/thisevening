@@ -1,5 +1,5 @@
 import { Box } from "components/Box/Box";
-import { Link } from "react-router-dom";
+import { NavItem } from "./AdditionalInfo.styled";
 
 const navItems = [
    { href: 'cast', text: 'Актеры' },
@@ -8,9 +8,9 @@ const navItems = [
 
 export const AdditionalInfo = ({ params }) => {
    return (
-      <Box display='flex' flexDirection="column" gridGap='4'>
+      <Box display='flex' gridGap='4'>
          {navItems.map(item => (
-            <Link key={item.href} to={`/thisevening/movies/${params}/${item.href}`}>{item.text}</Link>
+            <NavItem key={item.href} to={`/thisevening/movies/${params}/${item.href}`}>{item.text}</NavItem>
          ))}
       </Box>
    );

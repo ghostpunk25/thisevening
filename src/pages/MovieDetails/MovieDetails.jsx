@@ -1,11 +1,11 @@
 import { AdditionalInfo } from "components/AdditionalInfo/AdditionalInfo";
 import { Box } from "components/Box/Box";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Outlet, useLocation, useParams } from "react-router-dom";
-import { H1, H2, H3, Btn, P } from "./MovieDetails.styled"
+import { H1, H2, H3, Btn, P, AddP, Img } from "./MovieDetails.styled"
 
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
    const location = useLocation();
    const [movie, setMovie] = useState(null);
    const params = useParams();
@@ -18,6 +18,7 @@ export const MovieDetails = () => {
          try {
             const response = await (await fetch(`https://api.themoviedb.org/3/movie/${params.movieId}?api_key=bb57fc1f55d743e80077a0ce49d67a5f&language=ru-RUS`)).json();
             const movieId = await response;
+            console.log(movieId);
             setMovie(movieId);
             setStatus('resolved');
          } catch (err) {
@@ -38,13 +39,13 @@ export const MovieDetails = () => {
 
    if (status === 'resolved') {
       return <div>
-         <Box px='4' py='6' borderBottom='header' borderColor='header'>
+         <Box px='4' py='80px' borderBottom='header' borderColor='header' background={`url(https://image.tmdb.org/t/p/original/${movie.backdrop_path}) 0 0/cover no-repeat`}>
             <Btn to={location.state?.from ?? '/thisevening/home'}>Вернуться назад</Btn>
-            <Box display='flex' gridGap='6'>
-               <div>
-                  <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
-               </div>
-               <Box display='flex' flexDirection='column'>
+            <Box display='flex' gridGap='7'>
+               <Box flex='0 1 400px'>
+                  <Img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title} />
+               </Box>
+               <Box display='flex' flexDirection='column' pt='6' px='6' background='#0e0d0db8' color='white'>
                   <H1>{movie.title}</H1>
                   <P>Рейтинг: {movie.vote_average}</P>
                   <H2>Описание</H2>
@@ -58,11 +59,15 @@ export const MovieDetails = () => {
                </Box>
             </Box>
          </Box>
-         <Box display='flex' flexDirection="column" gridGap='5' py='6' px='4' borderBottom='header' borderColor='header'>
-            <p>Дополнительная информация</p>
+         <Box display='flex' flexDirection="column" alignItems='center' gridGap='5' py='6' px='4' borderBottom='header' borderColor='header'>
+            <AddP>Дополнительная информация</AddP>
             <AdditionalInfo params={params.movieId} />
          </Box>
-         <Outlet />
-      </div>
+         <Suspense fallback={null}>
+            <Outlet />
+         </Suspense>
+      </div >
    };
 };
+
+export default MovieDetails;

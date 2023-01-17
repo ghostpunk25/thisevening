@@ -1,30 +1,9 @@
 import { Box } from "components/Box/Box";
 import { useEffect, useState } from "react"
-import { Link, useLocation } from "react-router-dom";
-import styled from "styled-components";
+import { useLocation } from "react-router-dom";
+import { LinkItem, H1, Img, Name } from "./Home.styled";
 
-const LinkItem = styled(Link)`
-display: flex;
-flex-direction: column;
-gap: 10px;
-transition: all 0.3s ease 0s;
-
-:hover{
-   color: ${p => p.theme.colors.blue};
-}
-}
-`
-const H1 = styled.h1`
-font-size: ${p => p.theme.fontSize.l};
-font-weight: ${p => p.theme.fontWeights.bold};
-margin-bottom: ${p => p.theme.space[5]}px;
-`
-
-const Img = styled.img`
-max-width: 100%;
-`
-
-export const Home = () => {
+const Home = () => {
    const [status, setStatus] = useState('idle');
    const [moviesList, setMoviesList] = useState([]);
    const [err, setErr] = useState(null);
@@ -55,16 +34,18 @@ export const Home = () => {
    };
 
    if (status === 'resolved') {
-      return <Box display='flex' flexDirection='column' gridGap='6' p='6'>
+      return <Box display='flex' flexDirection='column' gridGap='6' px='5' py='80px'>
          <H1>Популярное сегодня</H1>
          <Box as='ul' display='grid' gridGap='6' gridTemplateColumns='repeat(6, 1fr)' >
             {moviesList.map(item => (
                <LinkItem state={{ from: location }} key={item.id} to={`/thisevening/movies/${item.id}`}>
-                  <div><Img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt={item.title} /></div>
-                  <p>{item.title}</p>
+                  <div><Img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title} /></div>
+                  <Name>{item.title}</Name>
                </LinkItem>
             ))}
          </Box>
       </Box>
    };
 };
+
+export default Home;

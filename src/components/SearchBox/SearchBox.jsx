@@ -4,7 +4,8 @@ import { Input, Btn } from "./SearchBox.styled";
 
 
 export const SearchBox = ({ onClick }) => {
-   const [movieName, setMovieName] = useState('')
+   const [movieName, setMovieName] = useState('');
+
 
    const heandleChange = (e) => {
       setMovieName(e.target.value)
