@@ -1,7 +1,9 @@
 import { Box } from "components/Box/Box";
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom";
-import { LinkItem, H1, Img, Name } from "./Home.styled";
+import { LinkItem, H1, Img, Name, Loading } from "./Home.styled";
+import * as API from '../../services/api';
+import LoaderPicture from "../../img/loading.png"
 
 const Home = () => {
    const [status, setStatus] = useState('idle');
@@ -13,8 +15,7 @@ const Home = () => {
       async function searchMuveis() {
          setStatus('pending');
          try {
-            const response = await (await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=bb57fc1f55d743e80077a0ce49d67a5f&query=20&page=1&language=ru-RUS`)).json();
-            const movies = await response;
+            const movies = await API.getTrendingMovies();
             setMoviesList(movies.results);
             setStatus('resolved');
          } catch (err) {
@@ -26,7 +27,7 @@ const Home = () => {
    }, []);
 
    if (status === 'pending') {
-      return <div>Завантажуємо...</div>
+      return <Box display='flex' justifyContent='center' alignItems='center'><Loading src={LoaderPicture} alt="loader" /></Box>
    };
 
    if (status === 'rejected') {
@@ -39,7 +40,7 @@ const Home = () => {
          <H1>Популярное сегодня</H1>
          <Box as='ul' display='flex' gridGap='6' justifyContent='space-evenly' flexWrap='wrap' >
             {moviesList.map(item => (
-               <LinkItem state={{ from: location }} key={item.id} to={`/thisevening/movies/${item.id}`}>
+               <LinkItem state={{ from: location }} key={item.id} to={`/movies/${item.id}`}>
                   <div ><Img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title} /></div>
                   <Name>{item.title}</Name>
                </LinkItem>

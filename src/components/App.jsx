@@ -4,7 +4,7 @@
 // import { Reviews } from './Reviews/Reviews';
 // import { Cast } from './Cast/Cast';
 // import { NotFound } from './NotFound/NotFound';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import { lazy } from 'react';
 
@@ -19,9 +19,8 @@ const NotFound = lazy(() => import('./NotFound/NotFound'));
 export const App = () => {
   return (
     <Routes>
-      <Route path="/thisevening" element={<Layout />}>
-        <Route index element={<Navigate to="home" />} />
-        <Route path="home" element={<Home />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
         <Route path="movies" element={<Movie />} />
         <Route path="movies/:movieId" element={<MovieDetails />} >
           <Route path="cast" element={<Cast />} />

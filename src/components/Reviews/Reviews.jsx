@@ -1,7 +1,9 @@
 import { Box } from "components/Box/Box";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Name, Review, NoReviews } from "./Reviews.styled";
+import { Name, Review, NoReviews, Loading } from "./Reviews.styled";
+import * as API from '../../services/api';
+import LoaderPicture from "../../img/loading.png"
 
 const Reviews = () => {
    const [reviews, setReviews] = useState([]);
@@ -14,9 +16,9 @@ const Reviews = () => {
       async function findReviews() {
          setStatus('pending');
          try {
-            const response = await (await fetch(`https://api.themoviedb.org/3/movie/${params.movieId}/reviews?api_key=bb57fc1f55d743e80077a0ce49d67a5f&language=en-US&page=1`)).json();
-            const review = await response;
-            setReviews(review.results)
+            const review = await API.getMovieReviews(params.movieId);
+            console.log(review);
+            setReviews(review.results);
             setStatus('resolved');
          } catch (err) {
             setErr('Упс... Щось пішло не так. Перезавантажте сторінку!');
@@ -28,7 +30,7 @@ const Reviews = () => {
    }, [params.movieId]);
 
    if (status === 'pending') {
-      return <div>Завантажуємо...</div>
+      return <Box display='flex' justifyContent='center' alignItems='center'><Loading src={LoaderPicture} alt="loader" /></Box>
    };
 
    if (status === 'rejected') {

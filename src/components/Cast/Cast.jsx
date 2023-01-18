@@ -1,8 +1,10 @@
 import { Box } from "components/Box/Box";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Img, NoCast } from "./Cast.styled";
+import { Img, NoCast, Loading } from "./Cast.styled";
 import defaultimg from "../../img//defaultImg.jpeg";
+import * as API from '../../services/api';
+import LoaderPicture from "../../img/loading.png";
 
 const Cast = () => {
    const [cast, setCast] = useState([]);
@@ -15,9 +17,8 @@ const Cast = () => {
       async function findCast() {
          setStatus('pending');
          try {
-            const response = await (await fetch(`https://api.themoviedb.org/3/movie/${params.movieId}/credits?api_key=bb57fc1f55d743e80077a0ce49d67a5f&language=ru-RUS`)).json();
-            const cast = await response;
-            setCast(cast.cast)
+            const cast = await API.getMovieCredits(params.movieId);
+            setCast(cast.cast);
             setStatus('resolved');
          } catch (err) {
             setErr('Упс... Щось пішло не так. Перезавантажте сторінку!');
@@ -29,7 +30,7 @@ const Cast = () => {
    }, [params.movieId]);
 
    if (status === 'pending') {
-      return <div>Загружаем...</div>
+      return <Box display='flex' justifyContent='center' alignItems='center'><Loading src={LoaderPicture} alt="loader" /></Box>
    };
 
    if (status === 'rejected') {

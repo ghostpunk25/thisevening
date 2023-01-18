@@ -1,8 +1,10 @@
 import { Box } from "components/Box/Box";
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom";
-import { LinkItem, Img, Name } from "./MoviesSaerchList.styled";
+import { LinkItem, Img, Name, Loading } from "./MoviesSaerchList.styled";
 import posterDefailt from "../../img/defaultImg.jpeg"
+import * as API from '../../services/api';
+import LoaderPicture from "../../img/loading.png"
 
 
 export const MoviesSaerchList = ({ name }) => {
@@ -18,10 +20,8 @@ export const MoviesSaerchList = ({ name }) => {
 
       async function searchName() {
          setStatus('pending');
-
          try {
-            const response = await (await fetch(`https://api.themoviedb.org/3/search/movie?api_key=bb57fc1f55d743e80077a0ce49d67a5f&language=ru-RUS&query=${name}&page=1&include_adult=false`)).json();
-            const movie = await response;
+            const movie = await API.getMoviesSearch(name);
             setMovies(movie.results);
             setStatus('resolved');
          } catch (err) {
@@ -33,7 +33,7 @@ export const MoviesSaerchList = ({ name }) => {
    }, [name]);
 
    if (status === 'pending') {
-      return <div>Завантажуємо...</div>
+      return <Box display='flex' justifyContent='center' alignItems='center'><Loading src={LoaderPicture} alt="loader" /></Box>
    };
 
    if (status === 'rejected') {

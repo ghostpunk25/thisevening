@@ -1,6 +1,7 @@
 import { Box } from "components/Box/Box";
 import { NavItem } from "./AdditionalInfo.styled";
 
+
 const navItems = [
    { href: 'cast', text: 'Актеры' },
    { href: 'reviews', text: 'Отзывы' },
