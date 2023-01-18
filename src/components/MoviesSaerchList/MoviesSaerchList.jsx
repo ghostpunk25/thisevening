@@ -43,7 +43,7 @@ export const MoviesSaerchList = ({ name }) => {
    if (status === 'resolved') {
       return <Box as='ul' display='grid' gridTemplateColumns='repeat(6, 1fr)' flexDirection='column' py='5' gridGap='5'>
          {movies.map(item => (
-            <LinkItem state={{ from: location }} key={item.id} to={`/thisevening/movies/${item.id}`}>
+            <LinkItem state={{ from: location }} key={item.id} to={`${item.id}`}>
                {item.poster_path !== null ? <div><Img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt={item.title} /></div> : <Box display='flex' flexDirection='column' flex='0 1 285px'><Img src={posterDefailt} alt={item.title} /></Box>}
                <Name>{item.title}</Name>
             </LinkItem>

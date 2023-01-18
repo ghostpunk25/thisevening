@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const Title = styled.p`
   font-size: 30px;
   line-height: 1.6;
-  font-weight: ${p => p.theme.fontWeight.bold};
+  font-weight: ${p => p.theme.fontWeights.bold};
   color: ${p => p.theme.colors.red};
   margin-bottom: 20px;
   /* text-align: center; */

@@ -6,11 +6,11 @@ const navItems = [
    { href: 'reviews', text: 'Отзывы' },
 ];
 
-export const AdditionalInfo = ({ params }) => {
+export const AdditionalInfo = ({ state }) => {
    return (
       <Box display='flex' gridGap='4'>
          {navItems.map(item => (
-            <NavItem key={item.href} to={`/thisevening/movies/${params}/${item.href}`}>{item.text}</NavItem>
+            <NavItem key={item.href} state={state} to={`${item.href}`}>{item.text}</NavItem>
          ))}
       </Box>
    );

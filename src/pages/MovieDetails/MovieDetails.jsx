@@ -40,7 +40,7 @@ const MovieDetails = () => {
    if (status === 'resolved') {
       return <div>
          <Box px='4' py='80px' borderBottom='header' borderColor='header' background={`url(https://image.tmdb.org/t/p/original/${movie.backdrop_path}) 0 0/cover no-repeat`}>
-            <Btn to={location.state?.from ?? '/thisevening/home'}>Вернуться назад</Btn>
+            <Btn to={location?.state ? location.state.from : '/'}>Вернуться назад</Btn>
             <Box display='flex' gridGap='7'>
                <Box flex='0 1 400px'>
                   <Img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title} />
@@ -49,7 +49,7 @@ const MovieDetails = () => {
                   <H1>{movie.title}</H1>
                   <P>Рейтинг: {movie.vote_average}</P>
                   <H2>Описание</H2>
-                  {movie.overview !== '' ? <P>{movie.overview}</P> : 'Отсутствует'}
+                  {movie.overview !== '' ? <P>{movie.overview}</P> : <P>Отсутствует</P>}
                   <H3>Жанр</H3>
                   <Box as='ul' display='flex' gridGap='4'>
                      {movie.genres.map(item => (
@@ -61,7 +61,7 @@ const MovieDetails = () => {
          </Box>
          <Box display='flex' flexDirection="column" alignItems='center' gridGap='5' py='6' px='4' borderBottom='header' borderColor='header'>
             <AddP>Дополнительная информация</AddP>
-            <AdditionalInfo params={params.movieId} />
+            <AdditionalInfo state={location.state} />
          </Box>
          <Suspense fallback={null}>
             <Outlet />
