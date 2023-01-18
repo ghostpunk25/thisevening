@@ -35,6 +35,7 @@ border:  ${p => p.theme.borders.normal};
 export const AddP = styled.p`
 font-size: ${p => p.theme.fontSize.m};
 font-weight: ${p => p.theme.fontWeights.bold};
+text-align: center;
 `
 export const Img = styled.img`
 max-width: 100%;

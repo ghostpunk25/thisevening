@@ -33,18 +33,19 @@ const Home = () => {
       return <div>{err}</div>
    };
 
+
    if (status === 'resolved') {
       return <Box display='flex' flexDirection='column' gridGap='6' px='5' py='80px'>
          <H1>Популярное сегодня</H1>
-         <Box as='ul' display='grid' gridGap='6' gridTemplateColumns='repeat(6, 1fr)' >
+         <Box as='ul' display='flex' gridGap='6' justifyContent='space-evenly' flexWrap='wrap' >
             {moviesList.map(item => (
                <LinkItem state={{ from: location }} key={item.id} to={`/thisevening/movies/${item.id}`}>
-                  <div><Img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title} /></div>
+                  <div ><Img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title} /></div>
                   <Name>{item.title}</Name>
                </LinkItem>
             ))}
          </Box>
-      </Box>
+      </Box >
    };
 };
 

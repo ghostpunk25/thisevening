@@ -40,11 +40,11 @@ const MovieDetails = () => {
       return <div>
          <Box px='4' py='80px' borderBottom='header' borderColor='header' background={`url(https://image.tmdb.org/t/p/original/${movie.backdrop_path}) 0 0/cover no-repeat`}>
             <Btn to={location?.state ? location.state.from : '/thisevening/home'}>Вернуться назад</Btn>
-            <Box display='flex' gridGap='7'>
-               <Box flex='0 1 400px'>
+            <Box display='flex' gridGap='7' justifyContent='center' flexWrap='wrap'>
+               <Box flex='0 1 320px'>
                   <Img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title} />
                </Box>
-               <Box display='flex' flexDirection='column' pt='6' px='6' background='#0e0d0db8' color='white'>
+               <Box display='flex' flex='0 1 50%' flexDirection='column' py='6' px='6' background='#0e0d0db8' color='white'>
                   <H1>{movie.title}</H1>
                   <P>Рейтинг: {movie.vote_average}</P>
                   <H2>Описание</H2>

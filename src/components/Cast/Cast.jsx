@@ -37,9 +37,9 @@ const Cast = () => {
    };
 
    if (status === 'resolved') {
-      return <Box as='ul' display='grid' background='#000' gridGap='6' gridTemplateColumns='repeat(6, 1fr)' px='4' py='6' justifyItems='center'>
+      return <Box as='ul' display='flex' justifyContent='space-evenly' flexWrap='wrap' background='#000' gridGap='6' px='4' py='6'>
          {cast.length !== 0 ? cast.map(item => (
-            <Box as='li' textAlign='center' background='white' display='flex' border='normal' gridGap='4' p='4' flexDirection='column' key={item.id}>
+            <Box as='li' textAlign='center' background='white' display='flex' flex='0 1 210px' border='normal' gridGap='4' p='4' flexDirection='column' key={item.id}>
                {item.profile_path !== null ? <Box display='flex' mb='4' flexDirection='column' flex='1 1 auto'>
                   <Img src={`https://image.tmdb.org/t/p/original/${item.profile_path}`} alt={item.name} />
                </Box> : <Box display='flex' mb='4' flexDirection='column' flex='1 1 auto'>

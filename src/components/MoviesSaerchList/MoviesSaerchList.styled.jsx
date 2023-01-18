@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const LinkItem = styled(Link)`
+flex: 0 1 210px;
 display: flex;
 flex-direction: column;
 gap: 10px;

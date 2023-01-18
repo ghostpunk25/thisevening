@@ -39,7 +39,7 @@ const Reviews = () => {
    if (status === 'resolved') {
       return <Box as='ul' display='flex' px='4' py='6' flexDirection='column' gridGap='6' background='#00000080' color='white'>
          {reviews.length !== 0 ? reviews.map(item => (
-            <Box as='li' p='6' background='#000000ba' key={item.id}>
+            <Box as='li' p='6' display='flex' flexDirection='column' background='#000000ba' key={item.id}>
                <Name>Имя пользователя: {item.author}</Name>
                <Review>{item.content}</Review>
             </Box>
