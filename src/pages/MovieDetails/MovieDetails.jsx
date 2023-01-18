@@ -44,13 +44,13 @@ const MovieDetails = () => {
                <Box flex='0 1 320px'>
                   <Img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title} />
                </Box>
-               <Box display='flex' flex='0 1 50%' flexDirection='column' py='6' px='6' background='#0e0d0db8' color='white'>
+               <Box display='flex' flexDirection='column' py='6' px='6' background='#0e0d0db8' color='white'>
                   <H1>{movie.title}</H1>
                   <P>Рейтинг: {movie.vote_average}</P>
                   <H2>Описание</H2>
                   {movie.overview !== '' ? <P>{movie.overview}</P> : <P>Отсутствует</P>}
                   <H3>Жанр</H3>
-                  <Box as='ul' display='flex' gridGap='4'>
+                  <Box as='ul' display='flex' flexWrap='wrap' gridGap='4'>
                      {movie.genres.map(item => (
                         <li key={item.id}>{item.name}</li>
                      ))}
