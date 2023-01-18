@@ -18,7 +18,6 @@ const MovieDetails = () => {
          try {
             const response = await (await fetch(`https://api.themoviedb.org/3/movie/${params.movieId}?api_key=bb57fc1f55d743e80077a0ce49d67a5f&language=ru-RUS`)).json();
             const movieId = await response;
-            console.log(movieId);
             setMovie(movieId);
             setStatus('resolved');
          } catch (err) {
@@ -40,7 +39,7 @@ const MovieDetails = () => {
    if (status === 'resolved') {
       return <div>
          <Box px='4' py='80px' borderBottom='header' borderColor='header' background={`url(https://image.tmdb.org/t/p/original/${movie.backdrop_path}) 0 0/cover no-repeat`}>
-            <Btn to={location?.state ? location.state.from : '/'}>Вернуться назад</Btn>
+            <Btn to={location?.state ? location.state.from : '/thisevening/home'}>Вернуться назад</Btn>
             <Box display='flex' gridGap='7'>
                <Box flex='0 1 400px'>
                   <Img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title} />
