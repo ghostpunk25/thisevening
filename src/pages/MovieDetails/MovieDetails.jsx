@@ -14,6 +14,7 @@ const MovieDetails = () => {
    const [err, setErr] = useState(null);
    const [status, setStatus] = useState('idle');
 
+
    useEffect(() => {
       async function searchMovieById() {
          setStatus('pending');

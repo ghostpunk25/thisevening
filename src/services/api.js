@@ -34,3 +34,8 @@ export const getMovieReviews = async movieId => {
    const response = await fetchApi.get(`movie/${movieId}/reviews?api_key=${API_KEY}`);
    return response.data;
 };
+
+export const getTopRatedMovies = async () => {
+   const response = await fetchApi.get(`movie/top_rated?api_key=${API_KEY}`);
+   return response.data;
+};

@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
-
-
 export const LinkItem = styled(Link)`
 flex: 0 1 210px;
 display: flex;
@@ -26,6 +24,10 @@ margin-bottom: ${p => p.theme.space[5]}px;
 text-align: center;
 `
 
+export const Img = styled.img`
+max-width: 100%;
+transition: all 0.3s ease 0s;
+`
 export const Name = styled.p`
 font-weight: ${p => p.theme.fontWeights.bold};
 text-align: center;
@@ -41,8 +43,4 @@ export const Spiner = keyframes`
 `
 export const Loading = styled.img`
 animation: 3s ${Spiner} linear 0s infinite;
-`
-export const Img = styled.img`
-max-width: 100%;
-transition: all 0.3s ease 0s;
 `
