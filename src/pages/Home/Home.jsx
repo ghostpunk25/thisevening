@@ -38,7 +38,7 @@ const Home = () => {
    if (status === 'resolved') {
       return <Box display='flex' flexDirection='column' gridGap='6' px='5' py='80px'>
          <H1>Популярное сегодня</H1>
-         <Box as='ul' display='flex' gridGap='6' justifyContent='space-evenly' flexWrap='wrap' >
+         <Box as='ul' pb='6' display='flex' gridGap='6' justifyContent='space-evenly' flexWrap='wrap' >
             {moviesList.map(item => (
                <LinkItem state={{ from: location }} key={item.id} to={`/movies/${item.id}`}>
                   <div ><Img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title} /></div>

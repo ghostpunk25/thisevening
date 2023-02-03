@@ -26,7 +26,7 @@ text-align: center;
 
 export const Img = styled.img`
 max-width: 100%;
-transition: all 0.3s ease 0s;
+transition: all 0.5s ease 0s;
 `
 export const Name = styled.p`
 font-weight: ${p => p.theme.fontWeights.bold};

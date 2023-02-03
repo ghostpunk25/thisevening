@@ -44,5 +44,5 @@ animation: 3s ${Spiner} linear 0s infinite;
 `
 export const Img = styled.img`
 max-width: 100%;
-transition: all 0.3s ease 0s;
+transition: all 0.5s ease 0s;
 `
